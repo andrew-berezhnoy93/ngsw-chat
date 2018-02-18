@@ -17,7 +17,11 @@ export class ChatComponent {
   messages: FirebaseListObservable<any[]>;
   name: string;
   message: FormControl = new FormControl();
-  constructor(public db: AngularFireDatabase, ar: ActivatedRoute, public swPush: SwPush) {
+  constructor(
+    public db: AngularFireDatabase,
+    ar: ActivatedRoute,
+    public swPush: SwPush
+  ) {
     this.name = ar.snapshot.params['name'];
     this.subscribe();
     this.messages = db.list('messages');
@@ -34,33 +38,47 @@ export class ChatComponent {
   }
 
   subscribe() {
-    this.swPush.requestSubscription({
-      serverPublicKey: 'BLJek4icYn3Q_5H67Id5c3X__tyHBKP4ayVlluqMq7U-0clFpECVm3lttiXWnGawrd2Cq1CUFSv4-axWTk4Hcug'
-    })
+    const convertedVapidKey: any = this.urlBase64ToUint8Array(
+      'BLJek4icYn3Q_5H67Id5c3X__tyHBKP4ayVlluqMq7U-0clFpECVm3lttiXWnGawrd2Cq1CUFSv4-axWTk4Hcug'
+    );
+    this.swPush
+      .requestSubscription({
+        serverPublicKey: convertedVapidKey
+      })
       .then(pushSubscription => {
-
         // Passing subscription object to our backend
         this.db.list('subscriber').push(pushSubscription);
-        this.db.list('subscriber').subscribe(res => {
+        this.db.list('subscriber').subscribe(
+          res => {
             console.log('[App] Add subscriber request answer', res);
           },
           err => {
             console.log('[App] Add subscriber request failed', err);
-          });
+          }
+        );
       })
       .catch(err => {
         console.error(err);
       });
-
   }
 
   showMessages() {
-
-    this.swPush.messages
-      .subscribe(message => {
-
-        console.log('[App] Push message received', message);
-        const notification = message;
-      });
-    }
+    this.swPush.messages.subscribe(message => {
+      console.log('[App] Push message received', message);
+      const notification = message;
+    });
   }
+
+  urlBase64ToUint8Array(base64String) {
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const base64 = (base64String + padding)
+      .replace(/\-/g, '+')
+      .replace(/_/g, '/');
+    const rawData = window.atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
+    for (let i = 0; i < rawData.length; ++i) {
+      outputArray[i] = rawData.charCodeAt(i);
+    }
+    return outputArray;
+  }
+}
