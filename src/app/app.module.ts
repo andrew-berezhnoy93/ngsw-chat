@@ -11,13 +11,7 @@ import { ChatComponent } from './chat/chat.component';
 import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-// import { Routes, RouterModule } from '@angular/router';
-
-// const routes: Routes = [
-//   { path: 'chat/:name', component: ChatComponent },
-//   { path: 'enter', component: EnterChatComponent },
-//   { path: '**', redirectTo: 'enter' }
-// ];
+import { PushService } from './common/services/push.service';
 
 @NgModule({
   declarations: [
@@ -43,10 +37,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AngularFireDatabaseModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule,
+    FlexLayoutModule
     // RouterModule.forRoot(routes, { useHash: false })
   ],
-  providers: [],
+  providers: [PushService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

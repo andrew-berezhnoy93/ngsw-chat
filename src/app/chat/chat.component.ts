@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { PushService } from '../common/services/push.service';
 import {
   AngularFireDatabase,
   FirebaseListObservable
@@ -9,11 +10,16 @@ import {
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent {
+export class ChatComponent implements OnDestroy {
   message: FormControl = new FormControl();
   messages: FirebaseListObservable<any[]>;
+  notifications: any;
+  unsubscribed = false;
   @Input() name: string;
-  constructor(public db: AngularFireDatabase) {
+  constructor(
+    public db: AngularFireDatabase,
+    private pushService: PushService
+  ) {
     this.messages = db.list('messages');
   }
 
@@ -24,5 +30,22 @@ export class ChatComponent {
       date: new Date().toLocaleTimeString()
     });
     this.message.reset();
+  }
+
+  showMessages() {
+   this.notifications = this.pushService.showMessages();
+  }
+
+  subscribe() {
+    this.pushService.subscribe();
+  }
+
+  async unsubscribeFromPush() {
+    await this.pushService.unsubscribeFromPush();
+    this.unsubscribed = !this.unsubscribed;
+  }
+
+  ngOnDestroy() {
+    this.pushService.unsubscribeFromPush();
   }
 }

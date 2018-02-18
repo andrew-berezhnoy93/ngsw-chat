@@ -1,6 +1,7 @@
 import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { SwPush } from '@angular/service-worker';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class PushService {
   constructor(private swPush: SwPush, private db: AngularFireDatabase) {}
@@ -15,8 +16,7 @@ export class PushService {
       })
       .then(pushSubscription => {
         // Passing subscription object to our backend
-        this.db.list('subscriber').push(pushSubscription);
-        this.db.list('subscriber').subscribe(
+        this.db.list('subscriber').push(pushSubscription).then(
           res => {
             console.log('[App] Add subscriber request answer', res);
           },
@@ -30,32 +30,35 @@ export class PushService {
       });
   }
 
-  showMessages() {
-    this.swPush.messages.subscribe(message => {
-      console.log('[App] Push message received', message);
-      const notification = message;
-    });
+  showMessages(): Observable<object> {
+    return this.swPush.messages;
+    // this.swPush.messages.subscribe(message => {
+    //   console.log('[App] Push message received', message);
+    //   const notification = message;
+    // });
   }
 
   unsubscribeFromPush() {
     // Get active subscription
     this.swPush.subscription.subscribe(
       pushSubscription => {
-        console.log('[App] pushSubscription', pushSubscription[0]);
+        console.log('[App] pushSubscription', pushSubscription);
 
         // Delete the subscription from the backend
         this.db
           .list('subscriber')
-          .remove(pushSubscription[0])
-          .then(res => console.log('removed'));
+          .remove(pushSubscription[0].$key)
+          .then(() => {
 
-        pushSubscription
-          .unsubscribe()
-          .then(success => {
-            console.log('[App] Unsubscription successful', success);
-          })
-          .catch(err => {
-            console.log('[App] Unsubscription failed', err);
+            pushSubscription
+            .unsubscribe()
+            .then(success => {
+              console.log('[App] Unsubscription successful', success);
+            })
+            .catch(err => {
+              console.log('[App] Unsubscription failed', err);
+            });
+
           });
       },
       err => {

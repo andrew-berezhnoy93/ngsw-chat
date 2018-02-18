@@ -42,6 +42,10 @@
       <button class="btn btn-success" (click)="subscribe()">subscribe</button>
       <button class="btn btn-success"  (click)="showMessages()">get message</button>
       <button class="btn btn-success"  (click)="unsubscribeFromPush()">unsubscribe</button>
+      <div *ngFor="let item of notifications | async; let i = index" >
+        <div style="background-color: red">{{ i }}</div>
+        <div style="background-color: green">{{ item }}</div>
+      </div>
     </form>
     </div>
   </div>
