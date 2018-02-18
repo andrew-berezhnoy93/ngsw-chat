@@ -38,10 +38,10 @@
           <button class="center-block col-md-8 col-sm-10 col-lg-6 col-xs-8 btn btn-success"[disabled]="message.value ? false : true" (click)="send(message.value)">
               Send
           </button>
-          <button (click)="subscribe()">subscribe</button>
-          <button (click)="showMessages()">get message</button>
-          <button (click)="unsubscribeFromPush()">unsubscribe</button>
       </div>
+      <button class="btn btn-success" (click)="subscribe()">subscribe</button>
+      <button class="btn btn-success"  (click)="showMessages()">get message</button>
+      <button class="btn btn-success"  (click)="unsubscribeFromPush()">unsubscribe</button>
     </form>
     </div>
   </div>
