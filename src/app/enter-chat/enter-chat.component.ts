@@ -9,6 +9,7 @@ import { FormControl } from '@angular/forms';
 export class EnterChatComponent {
   @Output() name: EventEmitter<any> = new EventEmitter();
   text: string;
+  model: any;
   constructor() {}
 
   change($event) {
