@@ -1,3 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
 @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+
+  /* html, body { */
+    /* make sure the body does not have a margin */
+    /* margin: 0; */
+    /* this forces the body tag to fill the height of the window */
+    /* height: 100%; */
+/* } */
+
+.common {
+    background: #f5f3f3;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 18px 10px;
+    width: 100%;
+    position: relative;
+  }

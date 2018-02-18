@@ -1,0 +1,45 @@
+<div class="col-sm-12 message_section">
+    <div class="row">
+    <div style="overflow: scroll; height: xyz;" #scrollMe [scrollTop]="scrollMe.scrollHeight" class="chat_area">
+    <ul class="list-unstyled" *ngFor="let message of messages | async">
+        <ng-container *ngIf="message.name === name; else elseTemplate">
+            <li class="left clearfix">
+                <span class="chat-img1 pull-left">
+                <img src="https://robohash.org/{{ message.$key }}" alt="User Avatar" class="img-circle">
+                 <strong>  {{ message.name }} </strong>
+                </span>
+                <div class="chat-body1 clearfix">
+                   <p class="text-right">{{ message.text }}</p>
+                   
+       <div class="chat_time pull-left">{{ message.date }}</div>
+                </div>
+          </li>
+        </ng-container>
+        <ng-template #elseTemplate>
+            <li class="left clearfix admin_chat">
+                <span class="chat-img1 pull-right">
+                 <strong>  {{ message.name }} </strong>
+                <img src="https://robohash.org/{{ message.$key }}" alt="User Avatar" class="img-circle">
+                </span>
+                <div class="chat-body1 clearfix">
+                   <p>{{ message.text }}</p>
+       <div class="chat_time pull-right">{{ message.date }}</div>
+                </div>
+             </li>
+        </ng-template>
+    </ul>
+    </div><!--chat_area-->
+  <div class="message_write">
+    <form class="text-center">
+      <div class="col-md-12 col-sm-12 col-lg-12">
+          <textarea class="col-md-10 col-lg-12 col-sm-6 form-control" placeholder="type a message" (keyup.enter)="send(message.value)" [formControl]="message"></textarea>
+      </div>
+      <div class="col-md-12 col-sm-12 col-lg-12">
+          <button class="center-block col-md-8 col-sm-10 col-lg-6 col-xs-8 btn btn-success"[disabled]="message.value ? false : true" (click)="send(message.value)">
+              Send
+          </button>
+      </div>
+    </form>
+    </div>
+  </div>
+  </div>

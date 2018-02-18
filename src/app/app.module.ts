@@ -4,11 +4,29 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { environment } from '../environments/environment';
+import { EnterChatComponent } from './enter-chat/enter-chat.component';
+import { ChatComponent } from './chat/chat.component';
+import { HeaderComponent } from './common/header/header.component';
+import { FooterComponent } from './common/footer/footer.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes = [
+  { path: 'chat/:name', component: ChatComponent },
+  { path: 'enter', component: EnterChatComponent },
+  { path: '**', redirectTo: 'enter' }
+];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    EnterChatComponent,
+    ChatComponent,
+    HeaderComponent,
+    FooterComponent
+  ],
   imports: [
     BrowserModule,
     environment.production
@@ -23,7 +41,10 @@ import { environment } from '../environments/environment';
       messagingSenderId: '602956867256'
     }),
     AngularFireDatabaseModule,
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
+    RouterModule.forRoot(routes, { useHash: false })
   ],
   providers: [],
   bootstrap: [AppComponent]

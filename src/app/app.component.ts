@@ -16,10 +16,7 @@ import 'rxjs/add/operator/map';
 export class AppComponent {
   messages: FirebaseListObservable<any[]>;
 
-  message: FormGroup = new FormGroup({
-    name: new FormControl(null, Validators.required),
-    text: new FormControl(null, Validators.required)
-  });
+  message: FormControl = new FormControl();
   constructor(db: AngularFireDatabase) {
     this.messages = db.list('messages');
   }

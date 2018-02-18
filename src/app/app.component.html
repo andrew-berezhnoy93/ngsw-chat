@@ -1,52 +1,10 @@
-<div class="col-sm-12 message_section">
-  <div class="row">
-  <div class="new_message_head">
-    <div class="text-center">Angular Meetup Chat</div>
-  </div>
-  
-  <div class="chat_area">
-  <ul class="list-unstyled" *ngFor="let message of messages | async; let i=index">
-      <ng-container *ngIf="i % 2 === 0; else elseTemplate">
-          <li class="left clearfix">
-              <span class="chat-img1 pull-left">
-              <img src="https://robohash.org/{{ i }}" alt="User Avatar" class="img-circle">
-              {{ message.name }}
-              </span>
-              <div class="chat-body1 clearfix">
-                 <p class="text-right">{{ message.text }}</p>
-                 
-     <div class="chat_time pull-right">{{ message.date }}</div>
-              </div>
-        </li>
-      </ng-container>
-      <ng-template #elseTemplate>
-          <li class="left clearfix admin_chat">
-              <span class="chat-img1 pull-right">
-                  {{ message.name }}
-              <img src="https://robohash.org/{{ i }}" alt="User Avatar" class="img-circle">
-              </span>
-              <div class="chat-body1 clearfix">
-                 <p>{{ message.text }}</p>
-     <div class="chat_time pull-left">{{ message.date }}</div>
-              </div>
-           </li>
-      </ng-template>
-  </ul>
-  </div><!--chat_area-->
-       <div class="message_write">
-          <form [formGroup]="message" form (ngSubmit)="send(message.value)">
-          <label class="center-block row pull-left col-md-6 col-sm-6 col-lg-4">Name:
-                  <input type="text" required formControlName="name" class="form-control">
-          </label>
-            
-  <label class="col-md-8 col-sm-6 col-lg-6">Message:
-    <textarea class="form-control" placeholder="type a message" formControlName="text"></textarea>
-  </label>
-  <div class="clearfix"></div>
-  <div class="chat_bottom">
-<button href="#" class="pull-right btn btn-success" [disabled]="message.invalid">
-Send</button></div>
-</form>
-  </div>
-  </div>
+
+<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center">
+  <header fxFlex="10%">
+      <app-header></app-header>  
+  </header>
+  <router-outlet fxFlex="90%"></router-outlet>
+  <!-- <footer fxFlex="10%">
+    <app-footer></app-footer>
+  </footer> -->
 </div>
