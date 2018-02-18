@@ -35,7 +35,7 @@ export class ChatComponent {
 
   subscribe() {
     this.swPush.requestSubscription({
-      serverPublicKey: 'pICarPjsO7zc7Xc5KabLJ6n8I5WrsvIdu7D7cwBqX0Q'
+      serverPublicKey: 'BLJek4icYn3Q_5H67Id5c3X__tyHBKP4ayVlluqMq7U-0clFpECVm3lttiXWnGawrd2Cq1CUFSv4-axWTk4Hcug'
     })
       .then(pushSubscription => {
 
