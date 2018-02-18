@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { SwPush } from '@angular/service-worker';
+
 @Component({
   selector: 'app-enter-chat',
   templateUrl: './enter-chat.component.html',
@@ -8,7 +11,16 @@ import { FormControl } from '@angular/forms';
 export class EnterChatComponent implements OnInit {
   name: FormControl = new FormControl();
 
-  constructor() {}
+  constructor(private router: Router, private swPush: SwPush) {}
 
   ngOnInit() {}
+
+  navigate(name) {
+    this.swPush.messages.subscribe(value => {
+      console.log('idi nahui');
+    });
+    this.swPush.subscription.subscribe(subscriber => {
+      console.log(subscriber);
+    });
+  }
 }
