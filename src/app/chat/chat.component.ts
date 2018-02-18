@@ -23,9 +23,10 @@ export class ChatComponent {
     public swPush: SwPush
   ) {
     this.name = ar.snapshot.params['name'];
-    this.subscribe();
+    // this.subscribe();
     this.messages = db.list('messages');
     this.showMessages();
+    this.unsubscribeFromPush();
   }
 
   send(text) {
@@ -67,6 +68,33 @@ export class ChatComponent {
       console.log('[App] Push message received', message);
       const notification = message;
     });
+  }
+
+  unsubscribeFromPush() {
+    // Get active subscription
+    this.swPush.subscription.subscribe(
+      pushSubscription => {
+        console.log('[App] pushSubscription', pushSubscription[0]);
+
+        // Delete the subscription from the backend
+        this.db
+          .list('subscriber')
+          .remove(pushSubscription[0])
+          .then(res => console.log('removed'));
+
+        pushSubscription
+          .unsubscribe()
+          .then(success => {
+            console.log('[App] Unsubscription successful', success);
+          })
+          .catch(err => {
+            console.log('[App] Unsubscription failed', err);
+          });
+      },
+      err => {
+        console.log('[App] Delete subscription request failed', err);
+      }
+    );
   }
 
   urlBase64ToUint8Array(base64String) {
