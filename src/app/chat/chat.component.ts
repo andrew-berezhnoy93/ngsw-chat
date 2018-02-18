@@ -13,7 +13,7 @@ import {
 export class ChatComponent implements OnDestroy {
   message: FormControl = new FormControl();
   messages: FirebaseListObservable<any[]>;
-  notifications: any;
+  notifications: any[] = [];
   unsubscribed = false;
   @Input() name: string;
   constructor(
@@ -33,7 +33,10 @@ export class ChatComponent implements OnDestroy {
   }
 
   showMessages() {
-   this.notifications = this.pushService.showMessages();
+    this.pushService.showMessages().subscribe(messages => {
+      this.notifications = messages['notifications'];
+      console.log('messages', messages);
+    });
   }
 
   subscribe() {

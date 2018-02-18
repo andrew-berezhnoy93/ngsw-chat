@@ -10,9 +10,9 @@ if (environment.production) {
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
-  .then(() => {
+  .then(async() => {
     if ('serviceWorker' in navigator && environment.production) {
-      navigator.serviceWorker.register('/ngsw-worker.js');
+      await navigator.serviceWorker.register('/ngsw-worker.js');
     }
   })
   .catch(err => console.log(err));
