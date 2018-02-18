@@ -1,17 +1,17 @@
 {
   "configVersion": 1,
-  "index": "https://andrew-berezhnoy93.github.io/testsw/index.html",
+  "index": "https://andrew-berezhnoy93.github.io/ngsw-chat/index.html",
   "assetGroups": [
     {
       "name": "app",
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "https://andrew-berezhnoy93.github.io/testsw/index.html",
-        "https://andrew-berezhnoy93.github.io/testsw/inline.a72361d69387a9cc46f6.bundle.js",
-        "https://andrew-berezhnoy93.github.io/testsw/main.02846ca156475852a9f3.bundle.js",
-        "https://andrew-berezhnoy93.github.io/testsw/polyfills.1457c99db4b6dba06e8d.bundle.js",
-        "https://andrew-berezhnoy93.github.io/testsw/styles.13d64df08bb752862a0b.bundle.css"
+        "https://andrew-berezhnoy93.github.io/ngsw-chat/index.html",
+        "https://andrew-berezhnoy93.github.io/ngsw-chat/inline.a72361d69387a9cc46f6.bundle.js",
+        "https://andrew-berezhnoy93.github.io/ngsw-chat/main.02846ca156475852a9f3.bundle.js",
+        "https://andrew-berezhnoy93.github.io/ngsw-chat/polyfills.1457c99db4b6dba06e8d.bundle.js",
+        "https://andrew-berezhnoy93.github.io/ngsw-chat/styles.13d64df08bb752862a0b.bundle.css"
       ],
       "patterns": []
     },
@@ -20,38 +20,38 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
-        "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/android-chrome-192x192.png",
-        "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/android-chrome-384x384.png",
-        "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/android-chrome-512x512.png",
-        "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/apple-touch-icon.png",
-        "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/browserconfig.xml",
-        "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/favicon-16x16.png",
-        "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/favicon-32x32.png",
-        "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/favicon.ico",
-        "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/mstile-150x150.png",
-        "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/safari-pinned-tab.svg",
-        "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/site.webmanifest"
+        "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/android-chrome-192x192.png",
+        "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/android-chrome-384x384.png",
+        "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/android-chrome-512x512.png",
+        "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/apple-touch-icon.png",
+        "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/browserconfig.xml",
+        "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/favicon-16x16.png",
+        "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/favicon-32x32.png",
+        "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/favicon.ico",
+        "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/mstile-150x150.png",
+        "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/safari-pinned-tab.svg",
+        "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/site.webmanifest"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "https://andrew-berezhnoy93.github.io/testsw/inline.a72361d69387a9cc46f6.bundle.js": "c8e9ee0b9d847e0a958c1c8357c25500512eab85",
-    "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/android-chrome-192x192.png": "07d64e155667663f53145fb382d3da4966d8651c",
-    "https://andrew-berezhnoy93.github.io/testsw/main.02846ca156475852a9f3.bundle.js": "351e3844801fc43e42a4b81915b9c507256a7fbc",
-    "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/android-chrome-384x384.png": "9e7dc561130b407a9f60565810273d43f5451ef9",
-    "https://andrew-berezhnoy93.github.io/testsw/polyfills.1457c99db4b6dba06e8d.bundle.js": "e29de1bb2e2b4396c66ea8deed94ff4b4b57821d",
-    "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/android-chrome-512x512.png": "2d5d981d0b48b49a17529fbdde9d7687a92b45ae",
-    "https://andrew-berezhnoy93.github.io/testsw/styles.13d64df08bb752862a0b.bundle.css": "3f0a6f43cf0a8959ba26c5a5336b24b20e22348f",
-    "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/apple-touch-icon.png": "ecef45a37a972f4be7f3f67a4c94de5e6f071cb7",
-    "https://andrew-berezhnoy93.github.io/testsw/index.html": "3c2dfe3b7fc27c5e796ae2c8fc4be9ca65946973",
-    "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/browserconfig.xml": "8e64a1ead39d4a14d530c9ee130a8daa4dc69231",
-    "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/favicon-16x16.png": "6f81cf006fc759baecf1794623e5c1b563d59614",
-    "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/favicon-32x32.png": "70d3bd83614b6e7c604bec7089bb6e2feca1ab23",
-    "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/favicon.ico": "88e4a0e326120feafb9dc9d1ec49a2fc5d9ccc6f",
-    "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/mstile-150x150.png": "63f8bb121aaf9558dc5fbca1698e305626ce8e52",
-    "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/safari-pinned-tab.svg": "80fbbe7fbaeb90108f35e4744fb9de9941cb6c85",
-    "https://andrew-berezhnoy93.github.io/testsw/assets/images/icons/site.webmanifest": "f36abf927cc1c2d9d966b44286af077e2f3acc7d"
+    "https://andrew-berezhnoy93.github.io/ngsw-chat/inline.a72361d69387a9cc46f6.bundle.js": "c8e9ee0b9d847e0a958c1c8357c25500512eab85",
+    "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/android-chrome-192x192.png": "07d64e155667663f53145fb382d3da4966d8651c",
+    "https://andrew-berezhnoy93.github.io/ngsw-chat/main.02846ca156475852a9f3.bundle.js": "351e3844801fc43e42a4b81915b9c507256a7fbc",
+    "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/android-chrome-384x384.png": "9e7dc561130b407a9f60565810273d43f5451ef9",
+    "https://andrew-berezhnoy93.github.io/ngsw-chat/polyfills.1457c99db4b6dba06e8d.bundle.js": "e29de1bb2e2b4396c66ea8deed94ff4b4b57821d",
+    "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/android-chrome-512x512.png": "2d5d981d0b48b49a17529fbdde9d7687a92b45ae",
+    "https://andrew-berezhnoy93.github.io/ngsw-chat/styles.13d64df08bb752862a0b.bundle.css": "3f0a6f43cf0a8959ba26c5a5336b24b20e22348f",
+    "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/apple-touch-icon.png": "ecef45a37a972f4be7f3f67a4c94de5e6f071cb7",
+    "https://andrew-berezhnoy93.github.io/ngsw-chat/index.html": "b2261fcafbd5fe1945b3b718bf4e31fda8693cbd",
+    "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/browserconfig.xml": "8e64a1ead39d4a14d530c9ee130a8daa4dc69231",
+    "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/favicon-16x16.png": "6f81cf006fc759baecf1794623e5c1b563d59614",
+    "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/favicon-32x32.png": "70d3bd83614b6e7c604bec7089bb6e2feca1ab23",
+    "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/favicon.ico": "88e4a0e326120feafb9dc9d1ec49a2fc5d9ccc6f",
+    "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/mstile-150x150.png": "63f8bb121aaf9558dc5fbca1698e305626ce8e52",
+    "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/safari-pinned-tab.svg": "80fbbe7fbaeb90108f35e4744fb9de9941cb6c85",
+    "https://andrew-berezhnoy93.github.io/ngsw-chat/assets/images/icons/site.webmanifest": "f36abf927cc1c2d9d966b44286af077e2f3acc7d"
   }
 }
