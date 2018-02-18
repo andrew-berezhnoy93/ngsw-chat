@@ -17,22 +17,11 @@ export class ChatComponent {
   messages: FirebaseListObservable<any[]>;
   name: string;
   message: FormControl = new FormControl();
-  constructor(db: AngularFireDatabase, ar: ActivatedRoute, sw: SwPush) {
+  constructor(public db: AngularFireDatabase, ar: ActivatedRoute, public swPush: SwPush) {
     this.name = ar.snapshot.params['name'];
-    sw
-      .requestSubscription({
-        serverPublicKey: 'tab8nm0_U0_yqvSO4Vd3YcxGVI-4dIGos2Ta9VWpRdo'
-      })
-      .then(value => {
-        console.log('sdsds', value);
-      });
-    sw.subscription.subscribe(subscription => {
-      console.log('subs', subscription);
-    });
+    this.subscribe();
     this.messages = db.list('messages');
-    sw.messages.subscribe(message => {
-      console.log(message);
-    });
+    this.showMessages();
   }
 
   send(text) {
@@ -43,4 +32,35 @@ export class ChatComponent {
     });
     this.message.reset();
   }
-}
+
+  subscribe() {
+    this.swPush.requestSubscription({
+      serverPublicKey: 'pICarPjsO7zc7Xc5KabLJ6n8I5WrsvIdu7D7cwBqX0Q'
+    })
+      .then(pushSubscription => {
+
+        // Passing subscription object to our backend
+        this.db.list('subscriber').push(pushSubscription);
+        this.db.list('subscriber').subscribe(res => {
+            console.log('[App] Add subscriber request answer', res);
+          },
+          err => {
+            console.log('[App] Add subscriber request failed', err);
+          });
+      })
+      .catch(err => {
+        console.error(err);
+      });
+
+  }
+
+  showMessages() {
+
+    this.swPush.messages
+      .subscribe(message => {
+
+        console.log('[App] Push message received', message);
+        const notification = message;
+      });
+    }
+  }
