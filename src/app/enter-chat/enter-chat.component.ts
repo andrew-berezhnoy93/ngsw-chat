@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
-import { SwPush } from '@angular/service-worker';
 
 @Component({
   selector: 'app-enter-chat',
   templateUrl: './enter-chat.component.html',
   styleUrls: ['./enter-chat.component.css']
 })
-export class EnterChatComponent implements OnInit {
-  name: FormControl = new FormControl();
+export class EnterChatComponent {
+  @Output() name: EventEmitter<any> = new EventEmitter();
+  text: string;
+  constructor() {}
 
-  constructor(private router: Router) {}
-
-  ngOnInit() {}
+  change($event) {
+    console.log($event);
+    this.text = $event;
+    this.name.emit(this.text);
+  }
 }

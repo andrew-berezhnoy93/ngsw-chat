@@ -5,4 +5,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  view;
+
+  change($event) {
+    this.view = $event.target.value;
+  }
 }

@@ -11,13 +11,13 @@ import { ChatComponent } from './chat/chat.component';
 import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { Routes, RouterModule } from '@angular/router';
+// import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [
-  { path: 'chat/:name', component: ChatComponent },
-  { path: 'enter', component: EnterChatComponent },
-  { path: '**', redirectTo: 'enter' }
-];
+// const routes: Routes = [
+//   { path: 'chat/:name', component: ChatComponent },
+//   { path: 'enter', component: EnterChatComponent },
+//   { path: '**', redirectTo: 'enter' }
+// ];
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    RouterModule.forRoot(routes, { useHash: false })
+    // RouterModule.forRoot(routes, { useHash: false })
   ],
   providers: [],
   bootstrap: [AppComponent]

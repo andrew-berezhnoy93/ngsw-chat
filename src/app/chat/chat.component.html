@@ -6,7 +6,7 @@
             <li class="left clearfix">
                 <span class="chat-img1 pull-left">
                 <img src="https://robohash.org/{{ message.$key }}" alt="User Avatar" class="img-circle">
-                 <strong>  {{ message.name }} </strong>
+                 <strong>  {{ message?.name }} </strong>
                 </span>
                 <div class="chat-body1 clearfix">
                    <p class="text-right">{{ message.text }}</p>
@@ -18,7 +18,7 @@
         <ng-template #elseTemplate>
             <li class="left clearfix admin_chat">
                 <span class="chat-img1 pull-right">
-                 <strong>  {{ message.name }} </strong>
+                 <strong>  {{ message?.name }} </strong>
                 <img src="https://robohash.org/{{ message.$key }}" alt="User Avatar" class="img-circle">
                 </span>
                 <div class="chat-body1 clearfix">

@@ -1,10 +1,14 @@
 
 <div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center">
-  <header fxFlex="10%">
-      <app-header></app-header>  
-  </header>
-  <router-outlet fxFlex="90%"></router-outlet>
-  <!-- <footer fxFlex="10%">
-    <app-footer></app-footer>
-  </footer> -->
+      <app-header fxFlex="10%"></app-header>  
+  <div fxFlex="85%">
+    <ng-container *ngIf="!view; else elseTemplate">
+      <app-enter-chat (change)="change($event)"></app-enter-chat>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <app-chat [name]="view"></app-chat>
+      <button class="btn btn-warning" (click)="view = null">Back</button>
+    </ng-template>
+  </div>
+    <app-footer fxFlex="5%"></app-footer>
 </div>
