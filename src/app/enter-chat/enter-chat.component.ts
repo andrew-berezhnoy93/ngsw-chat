@@ -11,7 +11,7 @@ import { SwPush } from '@angular/service-worker';
 export class EnterChatComponent implements OnInit {
   name: FormControl = new FormControl();
 
-  constructor(private router: Router, private swPush: SwPush) {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
 }

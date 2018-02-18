@@ -17,16 +17,9 @@ export class ChatComponent {
   messages: FirebaseListObservable<any[]>;
   name: string;
   message: FormControl = new FormControl();
-  constructor(
-    public db: AngularFireDatabase,
-    ar: ActivatedRoute,
-    public swPush: SwPush
-  ) {
+  constructor(public db: AngularFireDatabase, ar: ActivatedRoute) {
     this.name = ar.snapshot.params['name'];
-    // this.subscribe();
     this.messages = db.list('messages');
-    this.showMessages();
-    this.unsubscribeFromPush();
   }
 
   send(text) {
