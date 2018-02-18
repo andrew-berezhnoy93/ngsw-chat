@@ -3,7 +3,7 @@
                 <input fxFlex="50%" type="text" class="form-control" [formControl]="name" id="name">
             </div>
             <div fxLayout="row" fxLayoutAlign="center">
-                <!-- <button type="button" [disabled]="name.value ? false : true"  class="btn align-center fix-btn" [routerLink]="['/chat', name.value]">Enter Chat</button> -->
-                <button type="button" [disabled]="name.value ? false : true"  class="btn align-center fix-btn" (click)="navigate(name.value)">Enter Chat</button>
+                <button type="button" [disabled]="name.value ? false : true"  class="btn align-center fix-btn" [routerLink]="['/chat', name.value]">Enter Chat</button>
+                <!-- <button type="button" [disabled]="name.value ? false : true"  class="btn align-center fix-btn" (click)="navigate(name.value)">Enter Chat</button> -->
             </div>
           </div>
