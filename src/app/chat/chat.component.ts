@@ -19,9 +19,13 @@ export class ChatComponent {
   message: FormControl = new FormControl();
   constructor(db: AngularFireDatabase, ar: ActivatedRoute, sw: SwPush) {
     this.name = ar.snapshot.params['name'];
-    sw.requestSubscription({ serverPublicKey: '123456' }).then(value => {
-      console.log('sdsds', value);
-    });
+    sw
+      .requestSubscription({
+        serverPublicKey: 'tab8nm0_U0_yqvSO4Vd3YcxGVI-4dIGos2Ta9VWpRdo'
+      })
+      .then(value => {
+        console.log('sdsds', value);
+      });
     sw.subscription.subscribe(subscription => {
       console.log('subs', subscription);
     });
