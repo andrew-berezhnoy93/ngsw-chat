@@ -7,7 +7,12 @@ import { Component, OnInit, OnChanges, AfterViewInit } from '@angular/core';
 })
 export class AppComponent {
   view;
-
+/**
+ *
+ */
+constructor() {
+  console.log('hi4');
+}
   change($event) {
     this.view = $event.target.value;
   }
