@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PushService } from '../common/services/push.service';
 import {
@@ -10,9 +10,10 @@ import {
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent {
+export class ChatComponent implements OnInit {
   message: FormControl = new FormControl();
   messages: FirebaseListObservable<any[]>;
+  sb: FirebaseListObservable<any[]>;
   notifications: any[] = [];
   unsubscribed = false;
   @Input() name: string;
@@ -21,12 +22,11 @@ export class ChatComponent {
     private pushService: PushService
   ) {
     this.messages = db.list('messages');
-    db
-      .list('sb')
-      .push({ one: '12121212' })
-      .then(res => {
-        console.log('res', res);
-      });
+    this.sb = db.list('sb');
+  }
+
+  ngOnInit() {
+    this.sb.push({ wtf: 'wtf' }).then(res => console.log(res));
   }
 
   send(text) {
