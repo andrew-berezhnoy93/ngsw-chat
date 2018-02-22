@@ -21,13 +21,12 @@ export class ChatComponent implements OnDestroy {
     private pushService: PushService
   ) {
     this.messages = db.list('messages');
-    db.list('subscriptions').update('key', {
-      action: 'subscribe',
-      subscription: {
-        options: 'opts',
-        endpoint: 'endpoint'
-      }
-    });
+    db
+      .list('subscriptions')
+      .push({ one: '12121212' })
+      .then(res => {
+        console.log('res', res);
+      });
   }
 
   send(text) {
@@ -55,7 +54,7 @@ export class ChatComponent implements OnDestroy {
     this.unsubscribed = !this.unsubscribed;
   }
 
-  ngOnDestroy() {
-    this.pushService.unsubscribeFromPush();
-  }
+  // ngOnDestroy() {
+  //   this.pushService.unsubscribeFromPush();
+  // }
 }
