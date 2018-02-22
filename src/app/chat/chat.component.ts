@@ -22,7 +22,7 @@ export class ChatComponent {
   ) {
     this.messages = db.list('messages');
     db
-      .list('subscriptions')
+      .list('sb')
       .push({ one: '12121212' })
       .then(res => {
         console.log('res', res);
