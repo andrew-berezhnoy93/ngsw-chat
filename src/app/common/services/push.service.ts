@@ -17,13 +17,16 @@ export class PushService {
       })
       .then(pushSubscription => {
         // Passing subscription object to our backend
-        console.log('hey wtf', pushSubscription);
         this.db
-          .object('subscriber')
-          .set(pushSubscription)
+          .list('subscribers')
+          .push(pushSubscription)
           .then(
             res => {
               console.log('[App] Add subscriber request answer', res);
+
+              // const snackBarRef = this.snackBar.open('Now you are subscribed', null, {
+              //   duration: this.snackBarDuration
+              // });
             },
             err => {
               console.log('[App] Add subscriber request failed', err);
@@ -36,7 +39,7 @@ export class PushService {
   }
 
   showMessages() {
-   return this.swPush.messages;
+    return this.swPush.messages;
   }
 
   unsubscribeFromPush() {
@@ -51,6 +54,7 @@ export class PushService {
         //   .remove(pushSubscription[0])
         //   .then(() => {
         //   });
+        this.dbPush(pushSubscription);
         pushSubscription
           .unsubscribe()
           .then(success => {
@@ -82,4 +86,15 @@ export class PushService {
   //   console.log('erererss');
   //   return outputArray;
   // }
+
+  dbPush(subscription) {
+    this.db
+      .list('subscriptions')
+      .update('add subscriber', {
+        action: 'subscribe',
+        subscription: subscription
+      });
+  }
+
+  dbDelete() {}
 }

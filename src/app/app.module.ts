@@ -1,3 +1,4 @@
+import { LocalStorageService } from './common/services/local-storage.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
@@ -40,7 +41,7 @@ import { PushService } from './common/services/push.service';
     FlexLayoutModule
     // RouterModule.forRoot(routes, { useHash: false })
   ],
-  providers: [PushService],
+  providers: [PushService, LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

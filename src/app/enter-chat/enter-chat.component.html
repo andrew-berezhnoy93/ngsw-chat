@@ -1,8 +1,8 @@
           <div class="enter" fxLayout="column" fxLayoutAlign="center" fxLayoutGap="10px">
             <div fxLayout="row" fxLayoutAlign="center">
-                <input fxFlex="50%" class="form-control text-center" [(ngModel)]="model" type="text">
+                <input fxFlex="50%" class="form-control text-center" [(ngModel)]="model" type="text" (keyup.enter) = "button.disabled ? null : change(model)">
             </div>
             <div fxLayout="row" fxLayoutAlign="center">
-                <button type="button" [disabled]="model?.length ? false : true" (click)="change(model)"  class="btn btn-default align-center">Enter Angular Chat</button>
+                <button type="button" [disabled]="model?.length ? false : true" (click)="change(model)" #button  class="btn btn-default align-center">Enter Angular Chat</button>
             </div>
           </div>
