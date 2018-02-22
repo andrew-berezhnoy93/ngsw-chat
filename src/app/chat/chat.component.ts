@@ -10,7 +10,7 @@ import {
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements OnDestroy {
+export class ChatComponent {
   message: FormControl = new FormControl();
   messages: FirebaseListObservable<any[]>;
   notifications: any[] = [];
