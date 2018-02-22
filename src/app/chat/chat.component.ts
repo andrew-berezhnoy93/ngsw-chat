@@ -21,6 +21,13 @@ export class ChatComponent implements OnDestroy {
     private pushService: PushService
   ) {
     this.messages = db.list('messages');
+    db.list('subscriptions').update('key', {
+      action: 'subscribe',
+      subscription: {
+        options: 'opts',
+        endpoint: 'endpoint'
+      }
+    });
   }
 
   send(text) {

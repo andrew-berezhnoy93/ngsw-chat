@@ -10,32 +10,19 @@ export class PushService {
       'BLJek4icYn3Q_5H67Id5c3X__tyHBKP4ayVlluqMq7U-0clFpECVm3lttiXWnGawrd2Cq1CUFSv4-axWTk4Hcug';
   }
 
-  subscribe() {
-    this.swPush
-      .requestSubscription({
-        serverPublicKey: this.serverPublicKey
-      })
-      .then(pushSubscription => {
-        // Passing subscription object to our backend
-        this.db
-          .list('subscribers')
-          .push(pushSubscription)
-          .then(
-            res => {
-              console.log('[App] Add subscriber request answer', res);
+ async subscribe() {
+   let pushSubscription: PushSubscription;
 
-              // const snackBarRef = this.snackBar.open('Now you are subscribed', null, {
-              //   duration: this.snackBarDuration
-              // });
-            },
-            err => {
-              console.log('[App] Add subscriber request failed', err);
-            }
-          );
-      })
-      .catch(err => {
-        console.error('swsssdd', err);
-      });
+        try {
+        pushSubscription =  await this.swPush
+          .requestSubscription({
+            serverPublicKey: this.serverPublicKey
+          });
+         await this.dbPush(pushSubscription);
+         console.log('[App] Add subscriber request answer', res);
+        } catch (error) {
+          console.log('[App] Add subscriber request failed', err);
+        }
   }
 
   showMessages() {
@@ -88,7 +75,7 @@ export class PushService {
   // }
 
   dbPush(subscription) {
-    this.db
+  return  this.db
       .list('subscriptions')
       .update('add subscriber', {
         action: 'subscribe',
