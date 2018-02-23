@@ -1,6 +1,7 @@
+const webPush = require('web-push/src/index.js');
+const sendNotification = require('/web-push/src/index.js');
 import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { SwPush, ServiceWorkerModule } from '@angular/service-worker';
-import * as SW from '@angular/service-worker';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 @Injectable()
@@ -13,11 +14,11 @@ export class PushService {
 
   async subscribe() {
     let pushSubscription: PushSubscription;
-
     try {
       pushSubscription = await this.swPush.requestSubscription({
         serverPublicKey: this.serverPublicKey
       });
+      console.log(pushSubscription)
       const res = await this.dbPush(pushSubscription);
       console.log('[App] Add subscriber request answer', res);
     } catch (error) {
@@ -76,6 +77,7 @@ export class PushService {
 
   async dbPush(subscription): Promise<any> {
     try {
+      console.log(subscription);
       await this.db.list('subscriptions').push({
         action: 'subscribe',
         subscription: subscription

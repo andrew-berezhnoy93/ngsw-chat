@@ -14,7 +14,6 @@ export class ChatComponent {
   message: FormControl = new FormControl();
   messages: FirebaseListObservable<any[]>;
   sb: FirebaseListObservable<any[]>;
-  notifications: any[] = [];
   unsubscribed = false;
   @Input() name: string;
   constructor(
@@ -22,7 +21,6 @@ export class ChatComponent {
     private pushService: PushService
   ) {
     this.messages = db.list('messages');
-    this.subscribe();
   }
 
   send(text) {
@@ -36,15 +34,12 @@ export class ChatComponent {
 
   showMessages() {
     this.pushService.showMessages().subscribe(messages => {
-      this.notifications = messages['notifications'];
       console.log('messages', messages);
     });
   }
 
   async subscribe() {
-    console.log('subscribe method');
     try {
-      console.log('subscribe method try');
       await this.pushService.subscribe();
     } catch (error) {
       console.log(error);

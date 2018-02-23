@@ -2,6 +2,7 @@
     "name": "Angular Chat",
     "short_name": "NG-CHAT",
     "start_url":"/",
+    "gcm_sender_id": "103953800507",
     "theme_color": "#b54141",
     "background_color": "#b54141",
     "display": "standalone",
