@@ -18,10 +18,10 @@ export class PushService {
       pushSubscription = await this.swPush.requestSubscription({
         serverPublicKey: this.serverPublicKey
       });
-      await this.dbPush(pushSubscription);
-      console.log('[App] Add subscriber request answer');
+      const res = await this.dbPush(pushSubscription);
+      console.log('[App] Add subscriber request answer', res);
     } catch (error) {
-      console.log('[App] Add subscriber request failed');
+      console.log('[App] Add subscriber request failed', error);
     }
   }
 
@@ -29,33 +29,33 @@ export class PushService {
     return this.swPush.messages;
   }
 
-  unsubscribeFromPush() {
-    // Get active subscription
-    this.swPush.subscription.subscribe(
-      pushSubscription => {
-        console.log('[App] pushSubscription', pushSubscription);
+  // unsubscribeFromPush() {
+  //   // Get active subscription
+  //   this.swPush.subscription.subscribe(
+  //     pushSubscription => {
+  //       console.log('[App] pushSubscription', pushSubscription);
 
-        // Delete the subscription from the backend
-        // this.db
-        //   .list('subscriber')
-        //   .remove(pushSubscription[0])
-        //   .then(() => {
-        //   });
-        this.dbPush(pushSubscription);
-        pushSubscription
-          .unsubscribe()
-          .then(success => {
-            console.log('[App] Unsubscription successful', success);
-          })
-          .catch(err => {
-            console.log('[App] Unsubscription failed', err);
-          });
-      },
-      err => {
-        console.log('[App] Delete subscription request failed', err);
-      }
-    );
-  }
+  //       // Delete the subscription from the backend
+  //       // this.db
+  //       //   .list('subscriber')
+  //       //   .remove(pushSubscription[0])
+  //       //   .then(() => {
+  //       //   });
+  //       this.dbPush(pushSubscription);
+  //       pushSubscription
+  //         .unsubscribe()
+  //         .then(success => {
+  //           console.log('[App] Unsubscription successful', success);
+  //         })
+  //         .catch(err => {
+  //           console.log('[App] Unsubscription failed', err);
+  //         });
+  //     },
+  //     err => {
+  //       console.log('[App] Delete subscription request failed', err);
+  //     }
+  //   );
+  // }
 
   // urlBase64ToUint8Array(base64String) {
   //   console.log('erererq');

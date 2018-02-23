@@ -22,11 +22,7 @@ export class ChatComponent implements OnInit {
     private pushService: PushService
   ) {
     this.messages = db.list('messages');
-    this.sb = db.list('sb');
-  }
-
-  ngOnInit() {
-    this.sb.push({ wtf: 'wtf' }).then(res => console.log(res));
+    this.subscribe();
   }
 
   send(text) {
@@ -45,14 +41,20 @@ export class ChatComponent implements OnInit {
     });
   }
 
-  subscribe() {
-    this.pushService.subscribe();
+  async subscribe() {
+    console.log('subscribe method');
+    try {
+    console.log('subscribe method try');
+      await this.pushService.subscribe();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  async unsubscribeFromPush() {
-    await this.pushService.unsubscribeFromPush();
-    this.unsubscribed = !this.unsubscribed;
-  }
+  // async unsubscribeFromPush() {
+  //   await this.pushService.unsubscribeFromPush();
+  //   this.unsubscribed = !this.unsubscribed;
+  // }
 
   // ngOnDestroy() {
   //   this.pushService.unsubscribeFromPush();
