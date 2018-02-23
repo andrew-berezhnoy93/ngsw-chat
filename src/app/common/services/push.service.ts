@@ -1,5 +1,6 @@
 import { AngularFireDatabase } from 'angularfire2/database-deprecated';
-import { SwPush } from '@angular/service-worker';
+import { SwPush, ServiceWorkerModule } from '@angular/service-worker';
+import * as SW from '@angular/service-worker';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 @Injectable()
@@ -10,19 +11,18 @@ export class PushService {
       'BLJek4icYn3Q_5H67Id5c3X__tyHBKP4ayVlluqMq7U-0clFpECVm3lttiXWnGawrd2Cq1CUFSv4-axWTk4Hcug';
   }
 
- async subscribe() {
-   let pushSubscription: PushSubscription;
+  async subscribe() {
+    let pushSubscription: PushSubscription;
 
-        try {
-        pushSubscription =  await this.swPush
-          .requestSubscription({
-            serverPublicKey: this.serverPublicKey
-          });
-         await this.dbPush(pushSubscription);
-         console.log('[App] Add subscriber request answer', res);
-        } catch (error) {
-          console.log('[App] Add subscriber request failed', err);
-        }
+    try {
+      pushSubscription = await this.swPush.requestSubscription({
+        serverPublicKey: this.serverPublicKey
+      });
+      await this.dbPush(pushSubscription);
+      console.log('[App] Add subscriber request answer');
+    } catch (error) {
+      console.log('[App] Add subscriber request failed');
+    }
   }
 
   showMessages() {
@@ -74,13 +74,16 @@ export class PushService {
   //   return outputArray;
   // }
 
-  dbPush(subscription) {
-  return  this.db
-      .list('subscriptions')
-      .update('add subscriber', {
+  async dbPush(subscription): Promise<any> {
+    try {
+      await this.db.list('subscriptions').push({
         action: 'subscribe',
         subscription: subscription
       });
+    } catch (error) {
+      console.log('[Error] some error during push', error);
+    }
+    return Promise.resolve({ res: 200, message: 'pushed subscription' });
   }
 
   dbDelete() {}
