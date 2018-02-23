@@ -10,7 +10,7 @@ import {
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent {
   message: FormControl = new FormControl();
   messages: FirebaseListObservable<any[]>;
   sb: FirebaseListObservable<any[]>;
@@ -44,7 +44,7 @@ export class ChatComponent implements OnInit {
   async subscribe() {
     console.log('subscribe method');
     try {
-    console.log('subscribe method try');
+      console.log('subscribe method try');
       await this.pushService.subscribe();
     } catch (error) {
       console.log(error);
